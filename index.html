@@ -72,6 +72,84 @@ footer{background:#0d47a1;color:#fff;text-align:center;padding:35px 20px}footer 
  .modal-box{padding:22px 15px;border-radius:24px}
  .surprise-title{margin-left:35px;margin-right:35px}
 }
+
+/* Segunda sorpresa: ramo de rosas azules + carritos */
+.gift-btn{
+  border:0;background:#1565c0;color:#fff;padding:14px 24px;border-radius:999px;
+  font-size:1rem;font-weight:bold;cursor:pointer;box-shadow:0 9px 22px #1565c055;
+  transition:.25s;margin-top:18px
+}
+.gift-btn:hover{transform:scale(1.05);background:#0d47a1}
+.final-surprise{
+  position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;
+  padding:18px;background:rgba(5,22,55,.84);backdrop-filter:blur(9px);
+  opacity:0;visibility:hidden;transition:.4s ease
+}
+.final-surprise.show{opacity:1;visibility:visible}
+.final-gift{
+  width:min(900px,100%);max-height:92vh;overflow:auto;position:relative;text-align:center;
+  background:linear-gradient(145deg,#fff,#eaf5ff);border:5px solid #42a5f5;
+  border-radius:34px;padding:32px 24px 38px;box-shadow:0 30px 100px #0009;
+  transform:scale(.75) translateY(25px);transition:.45s cubic-bezier(.2,.8,.2,1)
+}
+.final-surprise.show .final-gift{transform:scale(1) translateY(0)}
+.final-gift h2{font-size:clamp(2.2rem,6vw,4rem);color:#0d47a1;margin-bottom:8px}
+.final-gift p{color:#355;line-height:1.7;font-size:1.08rem}
+.close-final{
+  position:absolute;right:13px;top:11px;width:43px;height:43px;border:0;border-radius:50%;
+  background:#0d47a1;color:#fff;font-size:1.5rem;cursor:pointer
+}
+.bouquet{
+  position:relative;height:260px;margin:12px auto 8px;max-width:470px
+}
+.stems{
+  position:absolute;left:50%;bottom:12px;width:8px;height:165px;background:#4caf50;
+  transform:translateX(-50%) rotate(1deg);border-radius:8px;box-shadow:-48px 24px 0 -2px #4caf50,48px 24px 0 -2px #4caf50
+}
+.leaf{position:absolute;width:55px;height:24px;background:#43a047;border-radius:100% 0 100% 0}
+.leaf.l1{left:22%;bottom:47px;transform:rotate(24deg)}
+.leaf.l2{right:22%;bottom:67px;transform:scaleX(-1) rotate(18deg)}
+.leaf.l3{left:30%;bottom:92px;transform:rotate(38deg)}
+.rose{
+  position:absolute;width:68px;height:68px;border-radius:50%;
+  background:radial-gradient(circle at 50% 48%,#0d47a1 0 15%,#1565c0 16% 33%,#1976d2 34% 52%,#42a5f5 53% 68%,#90caf9 69% 100%);
+  box-shadow:0 7px 15px #1565c055;animation:roseFloat 3s ease-in-out infinite
+}
+.rose:before,.rose:after{
+  content:"";position:absolute;inset:9px;border-radius:50%;
+  border:5px solid #64b5f6;opacity:.75
+}
+.rose:after{inset:18px;border-color:#0d47a1}
+.r1{left:19%;top:67px}.r2{left:34%;top:25px;animation-delay:.2s}.r3{left:50%;top:55px;animation-delay:.4s}
+.r4{left:64%;top:22px;animation-delay:.6s}.r5{left:77%;top:72px;animation-delay:.8s}
+.r6{left:39%;top:92px;transform:scale(.82);animation-delay:.5s}.r7{left:57%;top:98px;transform:scale(.82);animation-delay:.7s}
+@keyframes roseFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.r6{animation-name:roseFloat}.r7{animation-name:roseFloat}
+.car-showcase{
+  display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:18px 0 8px
+}
+.toy-car{
+  position:relative;width:150px;height:58px;background:linear-gradient(#ef5350,#b71c1c);
+  border-radius:48px 52px 18px 18px;box-shadow:0 8px 18px #0003;transform:skewX(-7deg)
+}
+.toy-car:nth-child(2){background:linear-gradient(#42a5f5,#0d47a1)}
+.toy-car:nth-child(3){background:linear-gradient(#ffd54f,#f57f17)}
+.toy-car:before{
+  content:"";position:absolute;width:62px;height:25px;left:43px;top:-15px;
+  background:linear-gradient(135deg,#dff6ff,#90caf9);border:3px solid #263238;
+  border-radius:22px 22px 6px 6px
+}
+.toy-car:after{
+  content:"";position:absolute;left:15px;right:15px;bottom:-10px;height:20px;
+  background:radial-gradient(circle at 12% 50%,#222 0 9px,transparent 10px),
+             radial-gradient(circle at 88% 50%,#222 0 9px,transparent 10px)
+}
+.hotwheels-label{
+  display:inline-block;margin-top:4px;padding:7px 14px;border-radius:999px;
+  background:#0d47a1;color:#fff;font-weight:900;letter-spacing:1px;font-size:.82rem
+}
+.final-note{margin:16px auto 0;max-width:650px;color:#1565c0!important;font-weight:bold}
+
 </style>
 </head>
 <body>
@@ -85,14 +163,49 @@ footer{background:#0d47a1;color:#fff;text-align:center;padding:35px 20px}footer 
     <div class="kicker">✨ Un detalle para ese niño que todavía llevas dentro ✨</div>
     <h1 class="name">DIEGO</h1>
     <p class="subtitle">💙 Porque crecer no significa dejar de disfrutar las pequeñas cosas que nos hacen felices. Hoy es un día para mantener vivo tu niño interior. 🏎️</p>
-    <button class="btn" onclick="sorpresa()">🏎️ ¡PRESIONA AQUI,DIEGO!</button>
+    <button class="btn" onclick="sorpresa()">🏎️ ¡ABRIR TU SORPRESA, DIEGO!</button>
   </div>
 
   <div class="track"></div>
   <div class="car">🏎️💨</div>
   <div class="car two">🚗💨</div>
-  <div class="car tree">🏎️💨</div>
 </header>
+
+<section>
+  <div class="container">
+    <div class="decor">🌸 💙 🌸 💙 🌸</div>
+    <h2 class="title">💙 Nunca dejes de ser ese niño</h2>
+    <p class="text">Detrás del hombre que eres, siempre habrá un niño que disfruta las aventuras, se emociona con un carrito nuevo y encuentra felicidad en las cosas sencillas. ✨</p>
+
+    <div class="cards">
+      <div class="card"><div class="emoji">🏎️</div><h3>Vuelve a emocionarte</h3><p>Que un pequeño Hot Wheels todavía pueda sacarte una sonrisa y despertar esa ilusión de cuando eras niño.</p></div>
+      <div class="card"><div class="emoji">🌸</div><h3>Cuida tu niño interior</h3><p>Crecer es parte de la vida, pero nunca tienes que dejar atrás esa parte de ti que disfruta, sueña y juega.</p></div>
+      <div class="card"><div class="emoji">⭐</div><h3>Sigue disfrutando</h3><p>Porque las mejores cosas muchas veces están en los pequeños detalles que nos hacen verdaderamente felices.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="special">
+      <div class="decor">🏎️ 💙 🌸</div>
+      <h2>Un pequeño regalo para un gran niño 🏁</h2>
+      <p>No importa cuántos años pasen: siempre habrá un espacio para jugar, soñar, emocionarse y disfrutar de aquello que te gusta.<br><br><strong>Este Hot Wheels es para recordarte que nunca debes dejar morir a ese niño que llevas dentro.</strong> 💙</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="title">📸 Algunos de tus momentos</h2>
+    <p class="text">Porque las aventuras también forman parte de ese niño que sigue disfrutando la vida. 💙</p>
+    <div class="gallery">
+      <div><div class="photo"><img src="diego-aventura.jpeg" alt="Diego en una aventura"></div><div class="caption">🏔️ Una gran aventura</div></div>
+      <div><div class="photo"><img src="diego-viajando.jpeg" alt="Diego disfrutando un paisaje"></div><div class="caption">🌄 Momentos para recordar</div></div>
+      <div><div class="photo"><img src="recuerdo-especial.png" alt="Recuerdo especial"></div><div class="caption">💙 Un recuerdo especial</div></div>
+    </div>
+  </div>
+</section>
 
 <section class="final">
   <div class="decor">🌸 💙 🌸 💙 🌸</div>
@@ -136,7 +249,38 @@ footer{background:#0d47a1;color:#fff;text-align:center;padding:35px 20px}footer 
       Porque detrás del hombre que eres, siempre estará ese niño que disfruta de los carritos, las aventuras y las pequeñas cosas que le hacen feliz.<br><br>
       🏎️ <strong>Este Hot Wheels es para que nunca olvides mantener vivo a tu niño interior.</strong> 💙<br><br>
       ✨ Nunca dejes de jugar, soñar y disfrutar. ✨
+      <br>
+      <button class="gift-btn" onclick="mostrarRegalo()">💙 PRESIONA UNA VEZ MÁS... 💙</button>
     </div>
+  </div>
+</div>
+
+
+<!-- Sorpresa final: ramo de rosas azules + carritos -->
+<div class="final-surprise" id="regaloFinal" aria-hidden="true">
+  <div class="final-gift">
+    <button class="close-final" onclick="cerrarRegalo()" aria-label="Cerrar">✕</button>
+    <div class="modal-flowers">🌸 💙 🌸 💙 🌸</div>
+    <h2>Para ti, Diego 💙</h2>
+    <p>Porque algunos detalles dicen mucho más que las palabras...</p>
+
+    <div class="bouquet" aria-label="Ramo de rosas azules">
+      <div class="stems"></div>
+      <div class="leaf l1"></div><div class="leaf l2"></div><div class="leaf l3"></div>
+      <div class="rose r1"></div><div class="rose r2"></div><div class="rose r3"></div>
+      <div class="rose r4"></div><div class="rose r5"></div><div class="rose r6"></div><div class="rose r7"></div>
+    </div>
+
+    <div class="hotwheels-label">🏎️ HOT WHEELS 🏎️</div>
+    <div class="car-showcase">
+      <div class="toy-car"></div>
+      <div class="toy-car"></div>
+      <div class="toy-car"></div>
+    </div>
+
+    <p class="final-note">
+      🌹 Un ramo de rosas azules para ti... y unos carritos para que nunca falte una pequeña razón para sonreír. 🏎️💙
+    </p>
   </div>
 </div>
 
@@ -153,6 +297,18 @@ function cerrarSorpresa(){
   modal.classList.remove("show");
   modal.setAttribute("aria-hidden","true");
   document.body.classList.remove("modal-open");
+}
+
+function mostrarRegalo(){
+  const regalo=document.getElementById("regaloFinal");
+  regalo.classList.add("show");
+  regalo.setAttribute("aria-hidden","false");
+  lanzarConfeti();
+}
+function cerrarRegalo(){
+  const regalo=document.getElementById("regaloFinal");
+  regalo.classList.remove("show");
+  regalo.setAttribute("aria-hidden","true");
 }
 document.getElementById("sorpresaModal").addEventListener("click",e=>{
   if(e.target===e.currentTarget) cerrarSorpresa();
