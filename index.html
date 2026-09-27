@@ -129,8 +129,8 @@ section{padding:85px 20px}
 /* Sorpresa final */
 .final-modal .modal-box{
   background:radial-gradient(circle at 50% 0,#dff4ff,#fff 55%);
-  overflow:hidden;
-  padding:28px 24px 32px
+  overflow:auto;max-height:94vh;
+  padding:24px 20px 28px
 }
 .final-heading{
   color:#063879;text-align:center;font-size:clamp(2.3rem,6vw,4rem);margin-bottom:4px
@@ -140,7 +140,8 @@ section{padding:85px 20px}
   text-align:center;color:#35536f;margin:5px auto 18px;max-width:650px;line-height:1.7
 }
 .final-photo-wrap{
-  width:min(520px,100%);margin:0 auto 18px;position:relative;
+  width:min(760px,100%);height:auto;max-height:62vh;margin:0 auto 18px;
+  position:relative;display:flex;align-items:center;justify-content:center;
   border-radius:26px;overflow:hidden;border:5px solid #58bfff;
   box-shadow:0 25px 65px #06387935;background:#fff
 }
@@ -149,7 +150,8 @@ section{padding:85px 20px}
   box-shadow:inset 0 0 45px #fff5,inset 0 0 0 1px #ffffffaa
 }
 .final-photo{
-  width:100%;display:block;height:auto;position:relative;z-index:1
+  display:block;width:auto;height:auto;max-width:100%;max-height:62vh;
+  object-fit:contain;position:relative;z-index:1
 }
 .final-message{
   text-align:center;margin:4px auto 0;max-width:730px;color:#0a3d91;line-height:1.75;
@@ -175,6 +177,9 @@ section{padding:85px 20px}
   .cars{right:50%;transform:translateX(50%);bottom:0}
 }
 @media(max-width:560px){
+  .final-photo-wrap{max-height:52vh;border-width:3px}
+  .final-photo{max-height:52vh}
+
   section{padding:65px 16px}.hero{padding:25px 15px}
   .name{letter-spacing:1px}.modal-box{padding:23px 14px}
   .gift-stage{min-height:590px}
