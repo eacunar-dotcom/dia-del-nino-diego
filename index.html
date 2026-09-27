@@ -70,6 +70,20 @@ button{font-family:inherit}
   position:absolute;bottom:68px;left:-250px;z-index:4;width:230px;animation:drive 9s linear infinite
 }
 .car-hero svg{width:100%;filter:drop-shadow(0 15px 12px #00152b88)}
+
+/* Los dos carritos pequeños de la V2, corriendo sobre la pista */
+.mini-car{
+  position:absolute;z-index:7;bottom:62px;left:-110px;
+  font-size:42px;line-height:1;filter:drop-shadow(0 7px 5px #00152b88);
+  white-space:nowrap;animation:miniRace 7s linear infinite;
+}
+.mini-car.two{
+  bottom:30px;font-size:34px;animation-duration:10s;animation-delay:2s;
+}
+@keyframes miniRace{
+  0%{left:-120px}
+  100%{left:110%}
+}
 .flower-corner{position:absolute;z-index:2;width:150px;opacity:.95;filter:drop-shadow(0 8px 12px #06438a55)}
 .fc1{left:2%;top:5%}.fc2{right:2%;top:8%;transform:scaleX(-1)}
 section{padding:85px 20px}
@@ -140,8 +154,8 @@ section{padding:85px 20px}
   text-align:center;color:#35536f;margin:5px auto 18px;max-width:650px;line-height:1.7
 }
 .final-photo-wrap{
-  width:auto;height:min(62vh,760px);max-width:100%;margin:0 auto 18px;
-  position:relative;display:flex;align-items:center;justify-content:center;
+  width:min(420px,78vw);aspect-ratio:492 / 636;height:auto;
+  margin:0 auto 18px;position:relative;display:block;
   border-radius:26px;overflow:hidden;border:5px solid #58bfff;
   box-shadow:0 25px 65px #06387935;background:#fff
 }
@@ -150,50 +164,9 @@ section{padding:85px 20px}
   box-shadow:inset 0 0 45px #fff5,inset 0 0 0 1px #ffffffaa
 }
 .final-photo{
-  display:block;width:auto;height:100%;max-width:100%;object-fit:contain;
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center;
   position:relative;z-index:1
 }
-
-/* Dos Hot Wheels animados con humo */
-.racing-cars{
-  position:fixed;left:0;right:0;bottom:22px;height:105px;z-index:8000;
-  pointer-events:none;overflow:hidden
-}
-.race-car{
-  position:absolute;width:190px;height:78px;
-  filter:drop-shadow(0 12px 8px #00152d99)
-}
-.race-car.blue{left:-230px;animation:raceRight 6.5s linear infinite}
-.race-car.red{right:-230px;transform:scaleX(-1);animation:raceLeft 7.5s linear infinite 1.8s}
-.smoke{
-  position:absolute;left:-18px;bottom:12px;width:90px;height:55px
-}
-.smoke i{
-  position:absolute;border-radius:50%;background:#d8e7efcc;
-  filter:blur(2px);animation:smokePuff 1.25s ease-out infinite
-}
-.smoke i:nth-child(1){width:22px;height:22px;left:5px;bottom:5px}
-.smoke i:nth-child(2){width:29px;height:29px;left:25px;bottom:18px;animation-delay:.18s}
-.smoke i:nth-child(3){width:18px;height:18px;left:52px;bottom:4px;animation-delay:.35s}
-.smoke i:nth-child(4){width:25px;height:25px;left:63px;bottom:25px;animation-delay:.5s}
-@keyframes raceRight{
-  0%{left:-230px;opacity:0}
-  8%{opacity:1}
-  92%{opacity:1}
-  100%{left:calc(100% + 230px);opacity:0}
-}
-@keyframes raceLeft{
-  0%{right:-230px;opacity:0}
-  8%{opacity:1}
-  92%{opacity:1}
-  100%{right:calc(100% + 230px);opacity:0}
-}
-@keyframes smokePuff{
-  0%{transform:translate(0,0) scale(.55);opacity:.15}
-  35%{opacity:.75}
-  100%{transform:translate(-32px,-22px) scale(1.45);opacity:0}
-}
-
 .final-message{
   text-align:center;margin:4px auto 0;max-width:730px;color:#0a3d91;line-height:1.75;
   font-size:1.08rem;background:#e8f6ff;border:1px solid #7ccfff;border-radius:20px;padding:18px
@@ -218,11 +191,11 @@ section{padding:85px 20px}
   .cars{right:50%;transform:translateX(50%);bottom:0}
 }
 @media(max-width:560px){
-  .final-photo-wrap{height:min(54vh,650px);max-width:calc(100vw - 30px);border-width:3px}
-  .final-photo{height:100%;max-width:100%}
-  .racing-cars{bottom:12px;height:82px}
-  .race-car{width:145px;height:60px}
+  .final-photo-wrap{width:min(88vw,390px);border-width:3px}
+  .final-photo{width:100%;height:100%;object-fit:cover}
 
+  .mini-car{font-size:34px;bottom:54px}
+  .mini-car.two{font-size:29px;bottom:25px}
   section{padding:65px 16px}.hero{padding:25px 15px}
   .name{letter-spacing:1px}.modal-box{padding:23px 14px}
   .gift-stage{min-height:590px}
@@ -266,6 +239,9 @@ section{padding:85px 20px}
       <path d="M29 81h25v7H29zM232 81h28v7h-28z" fill="#f6d35f"/>
     </svg>
   </div>
+
+  <div class="mini-car">🏎️💨</div>
+  <div class="mini-car two">🚗💨</div>
   <div class="checkers"></div>
 </header>
 
@@ -373,42 +349,6 @@ section{padding:85px 20px}
       Porque nunca eres demasiado grande para disfrutar de las pequeñas cosas
       que te hacen feliz. 💙✨
     </div>
-    <div class="racing-cars" aria-hidden="true">
-      <div class="race-car blue">
-        <div class="smoke"><i></i><i></i><i></i><i></i></div>
-        <svg viewBox="0 0 300 110">
-          <defs>
-            <linearGradient id="blueBody" x1="0" x2="1"><stop offset="0" stop-color="#063879"/><stop offset=".5" stop-color="#1677d2"/><stop offset="1" stop-color="#59c7ff"/></linearGradient>
-            <linearGradient id="glassB" x1="0" x2="1"><stop offset="0" stop-color="#c9f2ff"/><stop offset="1" stop-color="#5ba7d8"/></linearGradient>
-          </defs>
-          <path d="M25 72h238l22 15v16H15V87z" fill="url(#blueBody)"/>
-          <path d="M72 72l39-43h78l49 43z" fill="#0b55aa"/>
-          <path d="M117 35l-18 31h50V35zM160 35v31h54l-29-31z" fill="url(#glassB)"/>
-          <path d="M30 79h45v7H30zM226 79h45v7h-45z" fill="#8fe0ff"/>
-          <circle cx="76" cy="101" r="18" fill="#111820"/><circle cx="76" cy="101" r="8" fill="#a8c6d5"/>
-          <circle cx="228" cy="101" r="18" fill="#111820"/><circle cx="228" cy="101" r="8" fill="#a8c6d5"/>
-          <path d="M108 73h92l-9 9h-92z" fill="#d9f7ff66"/>
-        </svg>
-      </div>
-
-      <div class="race-car red">
-        <div class="smoke"><i></i><i></i><i></i><i></i></div>
-        <svg viewBox="0 0 300 110">
-          <defs>
-            <linearGradient id="redBody" x1="0" x2="1"><stop offset="0" stop-color="#7b1010"/><stop offset=".5" stop-color="#e53935"/><stop offset="1" stop-color="#ff7043"/></linearGradient>
-            <linearGradient id="glassR" x1="0" x2="1"><stop offset="0" stop-color="#e7fbff"/><stop offset="1" stop-color="#6b9bb4"/></linearGradient>
-          </defs>
-          <path d="M25 72h238l22 15v16H15V87z" fill="url(#redBody)"/>
-          <path d="M72 72l39-43h78l49 43z" fill="#b51d22"/>
-          <path d="M117 35l-18 31h50V35zM160 35v31h54l-29-31z" fill="url(#glassR)"/>
-          <path d="M30 79h45v7H30zM226 79h45v7h-45z" fill="#ffd0c8"/>
-          <circle cx="76" cy="101" r="18" fill="#111820"/><circle cx="76" cy="101" r="8" fill="#a8c6d5"/>
-          <circle cx="228" cy="101" r="18" fill="#111820"/><circle cx="228" cy="101" r="8" fill="#a8c6d5"/>
-          <path d="M106 73h98l-9 9h-98z" fill="#fff5"/>
-        </svg>
-      </div>
-    </div>
-
   </div>
 </div>
 
